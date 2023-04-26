@@ -4,9 +4,8 @@
   box-sizing: border-box;
 }
 
-h1 {
-  font-size: 3rem;
-  color: red;
+body {
+  font-family: "JetBrains Mono", sans-serif;
 }
 
 /*# sourceMappingURL=styles.css.map */
