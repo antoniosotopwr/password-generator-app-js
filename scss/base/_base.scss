@@ -47,6 +47,28 @@ body {
   }
   &__iconCopy {
     height: 1.5rem;
-    
+  }
+
+  // form section of the card
+  &__form {
+    width: 100%;
+    background-color: antiquewhite;
+  }
+  &__passwordLenghtSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+  &__passwordLenght{
+    font-size: 1.5rem;
+  }
+
+  &__sliderContainer{
+    padding: 0.5rem 1rem;
+  }
+
+  &__slider{
+    width: 100%;
   }
 }
