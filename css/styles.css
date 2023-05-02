@@ -104,5 +104,8 @@ body {
   background: black;
   height: 0.5rem;
 }
+.card__checkboxes {
+  padding: 0.5rem 1rem;
+}
 
 /*# sourceMappingURL=styles.css.map */
