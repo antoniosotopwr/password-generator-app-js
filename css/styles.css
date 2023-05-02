@@ -33,6 +33,13 @@ body {
   gap: 1rem;
   /*****Chrome *****/
   /***** Firefox *****/
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
 }
 .card__label {
   width: 100%;
@@ -106,6 +113,58 @@ body {
 }
 .card__checkboxes {
   padding: 0.5rem 1rem;
+}
+.card .containerr {
+  display: block;
+  position: relative;
+  padding-left: 1.875rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.card .containerr input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.card .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.3rem;
+  width: 1.3rem;
+  background-color: #eee;
+}
+.card .containerr:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.card .containerr input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+.card .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.card .containerr input:checked ~ .checkmark:after {
+  display: block;
+}
+.card .containerr .checkmark:after {
+  left: 6.9px;
+  top: 3.4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /*# sourceMappingURL=styles.css.map */
