@@ -195,4 +195,34 @@ body {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+  &__strenghtContainer {
+    padding: 0.5rem 1rem;
+  }
+  &__strenghtBackground {
+    padding: 1rem;
+    background-color: rgb(236, 227, 227);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__strenghtLabel{
+    color: rgb(128, 128, 128,0.8);
+    font-size: 0.9rem;
+  }
+  &__strengtColorsContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  &__strenghtSquareContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  &__squareSecurityLevel {
+    width: 0.6rem;
+    height: 1.5rem;
+    background-color: transparent;
+    border: solid black;
+  }
 }
