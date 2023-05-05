@@ -196,5 +196,26 @@ body {
   background-color: transparent;
   border: solid black;
 }
+.card__btnContainer {
+  padding: 0.5rem 1rem;
+  display: flex;
+}
+.card__btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  justify-content: center;
+  background-color: #d5c2c2;
+}
+.card .arrowIcon {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  margin-bottom: -0.15rem;
+  margin-left: -0.1rem;
+}
 
 /*# sourceMappingURL=styles.css.map */
