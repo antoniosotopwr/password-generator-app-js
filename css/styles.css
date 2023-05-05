@@ -6,19 +6,20 @@
 
 body {
   font-family: "JetBrains Mono", sans-serif;
+  background-color: #111016;
 }
 
 .container {
   max-width: 50rem;
   padding: 0 2rem;
   margin: 0 auto;
-  background-color: rgb(232, 231, 231);
 }
 .container h1 {
   text-align: center;
   font-size: 1rem;
   font-weight: normal;
   padding: 3rem 0 1rem 0;
+  color: gray;
 }
 .container p {
   text-align: center;
@@ -36,7 +37,7 @@ body {
   /* Hide the browser's default checkbox */
   /* Create a custom checkbox */
   /* On mouse-over, add a grey background color */
-  /* When the checkbox is checked, add a blue background */
+  /* When the checkbox is checked, add a white border */
   /* Create the checkmark/indicator (hidden when not checked) */
   /* Show the checkmark when checked */
   /* Style the checkmark/indicator */
@@ -46,18 +47,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: antiquewhite;
-  padding: 0.5rem 1rem;
+  background-color: #24232b;
+  padding: 0.8rem 1rem;
 }
 .card__password {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  color: white;
 }
 .card__iconCopy {
   height: 1.5rem;
 }
+.card__iconCopy:hover {
+  cursor: pointer;
+}
 .card__form {
   width: 100%;
-  background-color: antiquewhite;
+  background-color: #24232b;
+  color: white;
 }
 .card__passwordLenghtSection {
   display: flex;
@@ -67,6 +73,7 @@ body {
 }
 .card__passwordLenght {
   font-size: 1.5rem;
+  color: #a4ffaf;
 }
 .card__sliderContainer {
   padding: 0.5rem 1rem;
@@ -83,7 +90,7 @@ body {
   transition: all 0.3s linear;
 }
 .card input[type=range]::-webkit-slider-runnable-track {
-  background: white;
+  background: rgb(198, 198, 198);
   height: 0.5rem;
 }
 .card input[type=range]::-webkit-slider-thumb {
@@ -99,12 +106,13 @@ body {
 .card input[type=range]::-moz-range-thumb {
   border: none; /*Removes extra border that FF applies*/
   border-radius: 5rem; /*Removes default border-radius that FF applies*/
-  background-color: grey;
+  background-color: white;
   height: 1.5rem;
   width: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 .card input[type=range]::-moz-range-progress {
-  background-color: white;
+  background-color: #a4ffaf;
   height: 0.5rem;
 }
 .card input[type=range]::-moz-range-track {
@@ -134,18 +142,20 @@ body {
   width: 0;
 }
 .card .checkmark {
+  border: solid 2px white;
   position: absolute;
   top: 0;
   left: 0;
   height: 1.3rem;
   width: 1.3rem;
-  background-color: #eee;
+  background-color: transparent;
 }
 .card .containerr:hover input ~ .checkmark {
-  background-color: #ccc;
+  cursor: pointer;
 }
 .card .containerr input:checked ~ .checkmark {
-  background-color: #2196f3;
+  background-color: #a4ffaf;
+  border: transparent;
 }
 .card .checkmark:after {
   content: "";
@@ -156,11 +166,11 @@ body {
   display: block;
 }
 .card .containerr .checkmark:after {
-  left: 6.9px;
+  left: 6.5px;
   top: 3.4px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid black;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -171,7 +181,7 @@ body {
 }
 .card__strenghtBackground {
   padding: 1rem;
-  background-color: rgb(236, 227, 227);
+  background-color: #18171f;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -194,11 +204,12 @@ body {
   width: 0.6rem;
   height: 1.5rem;
   background-color: transparent;
-  border: solid black;
+  border: solid 2px white;
 }
 .card__btnContainer {
   padding: 0.5rem 1rem;
   display: flex;
+  margin-bottom: 0.5rem;
 }
 .card__btn {
   width: 100%;
@@ -208,7 +219,16 @@ body {
   display: inline-block;
   text-align: center;
   justify-content: center;
-  background-color: #d5c2c2;
+  color: black;
+  background-color: #a4ffaf;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+.card__btn:hover {
+  color: #a4ffaf;
+  background-color: transparent;
+  border: 2px solid #a4ffaf;
+  cursor: pointer;
 }
 .card .arrowIcon {
   width: 1rem;

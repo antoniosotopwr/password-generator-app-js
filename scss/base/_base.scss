@@ -5,6 +5,7 @@
 }
 body {
   font-family: "JetBrains Mono", sans-serif;
+  background-color: #111016;
 }
 
 // this will be in layout .scss
@@ -12,13 +13,14 @@ body {
   max-width: 50rem;
   padding: 0 2rem;
   margin: 0 auto;
-  background-color: rgb(232, 231, 231);
+  // background-color: #111016;
 
   h1 {
     text-align: center;
     font-size: 1rem;
     font-weight: normal;
     padding: 3rem 0 1rem 0;
+    color: gray;
   }
   p {
     text-align: center;
@@ -39,20 +41,25 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: antiquewhite;
-    padding: 0.5rem 1rem;
+    background-color: #24232b;
+    padding: 0.8rem 1rem;
   }
   &__password {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    color: white;
   }
   &__iconCopy {
     height: 1.5rem;
+    &:hover{
+      cursor: pointer;
+    }
   }
 
   // form section of the card
   &__form {
     width: 100%;
-    background-color: antiquewhite;
+    background-color: #24232b;
+    color: white;
   }
   &__passwordLenghtSection {
     display: flex;
@@ -62,6 +69,7 @@ body {
   }
   &__passwordLenght {
     font-size: 1.5rem;
+    color: #a4ffaf;
   }
 
   &__sliderContainer {
@@ -84,7 +92,7 @@ body {
 
   /*****Chrome *****/
   input[type="range"]::-webkit-slider-runnable-track {
-    background: white;
+    background: rgb(198, 198, 198);
     height: 0.5rem;
   }
 
@@ -103,12 +111,13 @@ body {
   input[type="range"]::-moz-range-thumb {
     border: none; /*Removes extra border that FF applies*/
     border-radius: 5rem; /*Removes default border-radius that FF applies*/
-    background-color: grey;
+    background-color: white;
     height: 1.5rem;
     width: 1.5rem;
+    transition: all 0.3s ease-in-out;
   }
   input[type="range"]::-moz-range-progress {
-    background-color: white;
+    background-color: #a4ffaf;
     height: 0.5rem;
   }
   input[type="range"]::-moz-range-track {
@@ -147,23 +156,24 @@ body {
 
   /* Create a custom checkbox */
   .checkmark {
-    //add border Colorwhite
+    border: solid 2px white;
     position: absolute;
     top: 0;
     left: 0;
     height: 1.3rem;
     width: 1.3rem;
-    background-color: #eee;
+    background-color: transparent;
   }
 
   /* On mouse-over, add a grey background color */
   .containerr:hover input ~ .checkmark {
-    background-color: #ccc;
+    cursor: pointer;
   }
 
-  /* When the checkbox is checked, add a blue background */
+  /* When the checkbox is checked, add a white border */
   .containerr input:checked ~ .checkmark {
-    background-color: #2196f3;
+    background-color: #a4ffaf;
+    border: transparent;
   }
 
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -184,12 +194,12 @@ body {
     // top: 5px;
     // width: 5px;
     // height: 10px;
-    left: 6.9px;
+    left: 6.5px;
     top: 3.4px;
     width: 5px;
     height: 10px;
 
-    border: solid white;
+    border: solid black;
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -200,7 +210,7 @@ body {
   }
   &__strenghtBackground {
     padding: 1rem;
-    background-color: rgb(236, 227, 227);
+    background-color: #18171f;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -223,13 +233,14 @@ body {
     width: 0.6rem;
     height: 1.5rem;
     background-color: transparent;
-    border: solid black;
+    border: solid 2px white;
   }
   &__btnContainer {
     padding: 0.5rem 1rem;
     display: flex;
+    margin-bottom: 0.5rem;
   }
-  &__btn{
+  &__btn {
     width: 100%;
     padding: 1rem;
     border: none;
@@ -237,9 +248,18 @@ body {
     display: inline-block;
     text-align: center;
     justify-content: center;
-    background-color: #d5c2c2;
+    color: black;
+    background-color: #a4ffaf;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    &:hover {
+      color: #a4ffaf;
+      background-color: transparent;
+      border: 2px solid #a4ffaf;
+      cursor: pointer;
+    }
   }
-  .arrowIcon{
+  .arrowIcon {
     width: 1rem;
     height: 1rem;
     display: inline-block;
