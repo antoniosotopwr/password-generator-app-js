@@ -9,6 +9,11 @@ body {
   background-color: #111016;
 }
 
+.colorLevel {
+  background-color: #f9ca66 !important;
+  border: none !important;
+}
+
 .container {
   max-width: 50rem;
   padding: 0 2rem;
@@ -122,7 +127,7 @@ body {
 .card__checkboxes {
   padding: 0.5rem 1rem;
 }
-.card .containerr {
+.card .checkboxContainer {
   display: block;
   position: relative;
   padding-left: 1.875rem;
@@ -134,7 +139,7 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-.card .containerr input {
+.card .checkboxContainer input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -150,10 +155,10 @@ body {
   width: 1.3rem;
   background-color: transparent;
 }
-.card .containerr:hover input ~ .checkmark {
+.card .checkboxContainer:hover input ~ .checkmark {
   cursor: pointer;
 }
-.card .containerr input:checked ~ .checkmark {
+.card .checkboxContainer input:checked ~ .checkmark {
   background-color: #a4ffaf;
   border: transparent;
 }
@@ -162,10 +167,10 @@ body {
   position: absolute;
   display: none;
 }
-.card .containerr input:checked ~ .checkmark:after {
+.card .checkboxContainer input:checked ~ .checkmark:after {
   display: block;
 }
-.card .containerr .checkmark:after {
+.card .checkboxContainer .checkmark:after {
   left: 6.5px;
   top: 3.4px;
   width: 5px;

@@ -34,68 +34,67 @@
           <div class="card__form">
             <div class="card__passwordLenghtSection">
               <p class="card__characterLabel">Character Lenght</p>
-              <p class="card__passwordLenght" >8</p>
+              <p class="card__passwordLenght" >1</p>
             </div>
             <div class="card__sliderContainer">
               <input
                 type="range"
                 min="1"
                 max="20"
-                value="8"
+                value="1"
                 class="card__slider"
                 oninput="displayLenghtPassword()"
               />
             </div>
             <div class="card__checkboxes">
-              <!-- Add value and other attributes to the input checkbox -->
               <div class="card__checkbox1">
-                <label class="containerr"
+                <label class="checkboxContainer"
                   >Include Uppercase Letters
                   <input
                     type="checkbox"
                     id="checkbox1"
                     name="checkbox1"
-                    value="uppercase"
-                    checked="checked"
+                    value="true"
+                    class="checkboxUpper"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="card__checkbox2">
-                <label class="containerr"
+                <label class="checkboxContainer"
                   >Include Lowercase Letters
                   <input
                     type="checkbox"
                     id="checkbox2"
                     name="checkbox2"
                     value="lowercase"
-                    checked="checked"
+                    class="checkboxLower"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="card__checkbox3">
-                <label class="containerr"
+                <label class="checkboxContainer"
                   >Include Numbers
                   <input
                     type="checkbox"
                     id="checkbox3"
                     name="checkbox4"
                     value="numbers"
-                    checked="checked"
+                    class="checkboxNumbers"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="card__checkbox4">
-                <label class="containerr"
+                <label class="checkboxContainer"
                   >Include Symbols
                   <input
                     type="checkbox"
                     id="checkbox4"
                     name="checkbox4"
                     value="symbols"
-                    checked="checked"
+                    class="checkboxSymbols"
                   />
                   <span class="checkmark"></span>
                 </label>

@@ -7,7 +7,10 @@ body {
   font-family: "JetBrains Mono", sans-serif;
   background-color: #111016;
 }
-
+.colorLevel {
+  background-color: #f9ca66 !important ;
+  border: none !important;
+}
 // this will be in layout .scss
 .container {
   max-width: 50rem;
@@ -50,7 +53,7 @@ body {
   }
   &__iconCopy {
     height: 1.5rem;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
@@ -129,7 +132,7 @@ body {
     padding: 0.5rem 1rem;
   }
 
-  .containerr {
+  .checkboxContainer {
     display: block;
     position: relative;
     // padding-left: 35px;
@@ -146,7 +149,7 @@ body {
   }
 
   /* Hide the browser's default checkbox */
-  .containerr input {
+  .checkboxContainer input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -166,12 +169,12 @@ body {
   }
 
   /* On mouse-over, add a grey background color */
-  .containerr:hover input ~ .checkmark {
+  .checkboxContainer:hover input ~ .checkmark {
     cursor: pointer;
   }
 
   /* When the checkbox is checked, add a white border */
-  .containerr input:checked ~ .checkmark {
+  .checkboxContainer input:checked ~ .checkmark {
     background-color: #a4ffaf;
     border: transparent;
   }
@@ -184,12 +187,12 @@ body {
   }
 
   /* Show the checkmark when checked */
-  .containerr input:checked ~ .checkmark:after {
+  .checkboxContainer input:checked ~ .checkmark:after {
     display: block;
   }
 
   /* Style the checkmark/indicator */
-  .containerr .checkmark:after {
+  .checkboxContainer .checkmark:after {
     // left: 9px;
     // top: 5px;
     // width: 5px;
