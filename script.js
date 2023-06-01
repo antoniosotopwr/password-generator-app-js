@@ -96,14 +96,42 @@ btnGeneratePassword.addEventListener("click", function () {
     console.log("upper, lower and symbol");
   }
   //---2 options
+  // 1 1 0 0
   else if (chkUpperInput.checked && chkLowerInput.checked) {
     console.log("Upper and Lower");
-  } else if (chkUpperInput.checked && chkNumberInput.checked) {
+  }
+  // 0 0 1 1
+  else if (chkNumberInput.checked && chkSymbolInput.checked) {
+    console.log("Number and symbol");
+  }
+  // 1 0 1 0
+  else if (chkUpperInput.checked && chkNumberInput.checked) {
     console.log("Upper and number");
-  } else if (chkUpperInput.checked) {
+  }
+  // 0 1 0 1
+  else if (chkLowerInput.checked && chkSymbolInput.checked) {
+    console.log("Lower and symbol");
+  }
+  // 0 1 1 0
+  else if (chkLowerInput.checked && chkNumberInput.checked) {
+    console.log("Lower and number");
+  }
+  // 1 0 0 1
+  else if (chkUpperInput.checked && chkSymbolInput.checked) {
+    console.log("Upper and symbol");
+  }
+  //---1 options
+  else if (chkUpperInput.checked) {
     console.log("Only upper");
+  } else if (chkLowerInput.checked) {
+    console.log("Only lower");
+  } else if (chkNumberInput.checked) {
+    console.log("Only Number");
+  } else if (chkSymbolInput.checked) {
+    console.log("Only symbol");
   } else {
-    console.log("Default case");
+    console.log("Please check at least one checkbox");
+    alert("Please check at least one checkbox");
   }
 });
 
