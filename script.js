@@ -12,25 +12,37 @@ const chkLowerInput = document.querySelector(".checkboxLower");
 const chkNumberInput = document.querySelector(".checkboxNumbers");
 const chkSymbolInput = document.querySelector(".checkboxSymbols");
 
+//generate a random num between 0...N-1
+const randomNum = (max) => {
+  return Math.trunc(Math.random() * max) + 1 - 1;
+};
+
 //--ARRAYS
 const upperArray = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]; //25,26
 const lowerArray = [..."abcdefghijklmnopqrstuvwxyz"]; //25,26
 const numbersArray = [..."0123456789"]; //9,10
 const symbolsArray = [..."!@#$%^&*?"]; // 8,9
 
-const upperLowerArray = [upperArray, lowerArray];
-const upperLowerNumberArray = [upperArray, lowerArray, numbersArray];
-// console.log(upperLowerNumberArray[2]);
-//--FUNCTIONS
+//--VARIABLES
 let password = "";
 let sliderNumber = 1;
 let chosenArray = 0;
 let letter = "";
 
-//generate a random num between 0...N-1
-const randomNum = (max) => {
-  return Math.trunc(Math.random() * max) + 1 - 1;
-};
+//ARRAYS OF OPTIONS
+//--4 array complete
+const upperLowerNumberSymbolArray = [
+  upperArray,
+  lowerArray,
+  numbersArray,
+  symbolsArray,
+];
+//--3 arrays
+const upperLowerNumberArray = [upperArray, lowerArray, numbersArray];
+//--2 arrays
+const upperLowerArray = [upperArray, lowerArray];
+
+
 
 //Function to display the current value of the slider with oninput property
 const displayLenghtPassword = () => {
@@ -46,9 +58,6 @@ const displayLenghtPassword = () => {
   }
 };
 
-//it should be from greater options to lower
-// (first the 4 option, then all the 3 posible combinations, then 2 and so on)
-
 //analice where add the none option
 // (if at first or if it could be the default case(but i guess it should be the first one))
 
@@ -61,6 +70,27 @@ btnGeneratePassword.addEventListener("click", function () {
     chkSymbolInput.checked
   ) {
     console.log("Upper,Lower, Number and Symbol (all)");
+    for (let i = 1; i <= sliderNumber; i++) {
+      chosenArray = upperLowerNumberSymbolArray[randomNum(4)];
+      if (chosenArray === upperArray) {
+        letter = upperArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === lowerArray) {
+        letter = lowerArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === numbersArray) {
+        letter = numbersArray[randomNum(10)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === symbolsArray) {
+        letter = symbolsArray[randomNum(9)];
+        console.log(`Letter: ${letter}`);
+      }
+      password = password + letter;
+    }
+    labelPassword.textContent = password;
+    console.log(`Password:${password}, lenght:${password.length}`);
+    password = "";
+    letter = "";
   }
   //--- 3 OPTIONS ---
   // 1 1 1 0
@@ -70,6 +100,25 @@ btnGeneratePassword.addEventListener("click", function () {
     chkNumberInput.checked
   ) {
     console.log("Upper,Lower and number");
+
+    for (let j = 1; j <= sliderNumber; j++) {
+      chosenArray = upperLowerNumberArray[randomNum(3)];
+      if (chosenArray === upperArray) {
+        letter = upperArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === lowerArray) {
+        letter = lowerArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === numbersArray) {
+        letter = numbersArray[randomNum(10)];
+        console.log(`Letter: ${letter}`);
+      }
+      password = password + letter;
+    }
+    labelPassword.textContent = password;
+    console.log(`Password:${password}, lenght:${password.length}`);
+    password = "";
+    letter = "";
   }
   // 0 1 1 1
   else if (
@@ -99,6 +148,12 @@ btnGeneratePassword.addEventListener("click", function () {
   // 1 1 0 0
   else if (chkUpperInput.checked && chkLowerInput.checked) {
     console.log("Upper and Lower");
+    for (let i = 1; i <= sliderNumber; i++) {
+      password = password + `${upperLowerArray[randomNum(2)][randomNum(26)]}`;
+    }
+    console.log(password);
+    labelPassword.textContent = password;
+    password = "";
   }
   // 0 0 1 1
   else if (chkNumberInput.checked && chkSymbolInput.checked) {
