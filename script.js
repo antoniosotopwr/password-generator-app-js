@@ -42,7 +42,12 @@ const upperLowerNumberArray = [upperArray, lowerArray, numbersArray];
 //--2 arrays
 const upperLowerArray = [upperArray, lowerArray];
 
-
+//--TO DO
+/*
+1) add the squares colors in the validation of the lenght of the password or with certain checkboxes
+2) find a way to reset the slider to the default when recharge the page
+3) Try to apply the dry principle in the ifs of the password generations
+*/
 
 //Function to display the current value of the slider with oninput property
 const displayLenghtPassword = () => {
@@ -263,5 +268,3 @@ btnGeneratePassword.addEventListener("click", function () {
 // password = "";
 // letter = "";
 
-//to do
-//se if we can create a function with both for loops for dry principle
