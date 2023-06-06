@@ -38,7 +38,19 @@ const upperLowerNumberSymbolArray = [
   symbolsArray,
 ];
 //--3 arrays
-const upperLowerNumberArray = [upperArray, lowerArray, numbersArray];
+const upperLowerNumberArray = [...upperArray,  ...numbersArray,...lowerArray];
+const lowerNumberSymbolArray = [
+  ...lowerArray,
+  ...numbersArray,
+  ...symbolsArray,
+];
+const upperNumberSymbolArray = [
+  ...upperArray,
+  ...numbersArray,
+  ...symbolsArray,
+];
+const upperLowerSymbolArray = [...upperArray, ...lowerArray, ...symbolsArray];
+
 //--2 arrays
 const upperLowerArray = [upperArray, lowerArray];
 
@@ -47,6 +59,14 @@ const upperLowerArray = [upperArray, lowerArray];
 1) add the squares colors in the validation of the lenght of the password or with certain checkboxes
 2) find a way to reset the slider to the default when recharge the page
 3) Try to apply the dry principle in the ifs of the password generations
+4) Add the remaining validations for change the password
+*/
+
+//--To think about
+/* 
+When a specific array(number, upper, lower and symbol combination) is created
+it is better to make it like array = [subArray1, subArray2,... N]
+or it should be array = [...subArray1, ...subArray2, ...N]
 */
 
 //Function to display the current value of the slider with oninput property
@@ -65,6 +85,20 @@ const displayLenghtPassword = () => {
 
 //analice where add the none option
 // (if at first or if it could be the default case(but i guess it should be the first one))
+
+const generatePassword = function (array, sliderLenght) {
+  let chosenArrayLenght = array.length;
+  for (let i = 1; i <= sliderLenght; i++) {
+    letter = array[randomNum(chosenArrayLenght)];
+    password = password + letter;
+    console.log(password);
+  }
+  // console.log(`Password:${password}, lenght:${password.length}`);
+  labelPassword.textContent = password;
+  password = "";
+  letter = "";
+  chosenArrayLenght = 0;
+};
 
 //function to check checkboxes (only checkboxes first)
 btnGeneratePassword.addEventListener("click", function () {
@@ -105,25 +139,8 @@ btnGeneratePassword.addEventListener("click", function () {
     chkNumberInput.checked
   ) {
     console.log("Upper,Lower and number");
-
-    for (let j = 1; j <= sliderNumber; j++) {
-      chosenArray = upperLowerNumberArray[randomNum(3)];
-      if (chosenArray === upperArray) {
-        letter = upperArray[randomNum(26)];
-        console.log(`Letter: ${letter}`);
-      } else if (chosenArray === lowerArray) {
-        letter = lowerArray[randomNum(26)];
-        console.log(`Letter: ${letter}`);
-      } else if (chosenArray === numbersArray) {
-        letter = numbersArray[randomNum(10)];
-        console.log(`Letter: ${letter}`);
-      }
-      password = password + letter;
-    }
-    labelPassword.textContent = password;
-    console.log(`Password:${password}, lenght:${password.length}`);
-    password = "";
-    letter = "";
+    generatePassword(upperLowerNumberArray, sliderNumber);
+    console.log(upperLowerNumberArray);
   }
   // 0 1 1 1
   else if (
@@ -132,6 +149,7 @@ btnGeneratePassword.addEventListener("click", function () {
     chkSymbolInput.checked
   ) {
     console.log("Lower, number and symbol");
+    generatePassword(lowerNumberSymbolArray, sliderNumber);
   }
   // 1 0 1 1
   else if (
@@ -139,6 +157,7 @@ btnGeneratePassword.addEventListener("click", function () {
     chkNumberInput.checked &&
     chkSymbolInput.checked
   ) {
+    generatePassword(upperNumberSymbolArray, sliderNumber);
     console.log("upper, number and symbol");
   }
   // 1 1 0 1
@@ -148,6 +167,7 @@ btnGeneratePassword.addEventListener("click", function () {
     chkSymbolInput.checked
   ) {
     console.log("upper, lower and symbol");
+    generatePassword(upperLowerSymbolArray, sliderNumber);
   }
   //---2 options
   // 1 1 0 0
@@ -245,26 +265,37 @@ btnGeneratePassword.addEventListener("click", function () {
 //   }
 // });
 
-//I DONT KNOW WHAT WAS THIS XD
-// for (let i = 1; i <= 6; i++) {
-//   console.log(`iteration: ${i}`);
-//   for (let j = 1; i <= 6; i++) {
-//     chosenArray = upperLowerNumberArray[randomNum(3)];
-//     // console.log(chosenArray);
-//     if (chosenArray === upperArray) {
-//       letter = upperArray[randomNum(26)];
-//       console.log(`Letter: ${letter}`);
-//     } else if (chosenArray === lowerArray) {
-//       letter = lowerArray[randomNum(26)];
-//       console.log(`Letter: ${letter}`);
-//     }else if(chosenArray === numbersArray){
-//       letter = numbersArray[randomNum(10)];
-//       console.log(`Letter: ${letter}`);
-//     }
-//     password = password + letter;
-//   }
-// }
-// console.log(`Password:${password}, lenght:${password.length}`);
-// password = "";
-// letter = "";
+// OLD WAYS OF GENERATE PASSWORDS
+//I think this way is more efficent to generate accurate passwords (i guess)
+/* 
+this option need to declare their arrays like this
+const upperLowerNumberArray = [upperArray, lowerArray, numbersArray];
+whitout the spread operator in the sub arrays [...upperArray,...lowerArray]
 
+1)-----------for 3 and 4 password checkboxes
+for (let i = 1; i <= sliderNumber; i++) {
+      chosenArray = upperLowerNumberArray[randomNum(3)];
+      if (chosenArray === upperArray) {
+        letter = upperArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === lowerArray) {
+        letter = lowerArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === numbersArray) {
+        letter = numbersArray[randomNum(10)];
+        console.log(`Letter: ${letter}`);
+      }
+      password = password + letter;
+    }
+    labelPassword.textContent = password;
+    console.log(`Password:${password}, lenght:${password.length}`);
+    password = "";
+    letter = "";
+2)-------for 2 checkboxes option
+for (let i = 1; i <= sliderNumber; i++) {
+      password = password + `${upperLowerArray[randomNum(2)][randomNum(26)]}`;
+    }
+    console.log(password);
+    labelPassword.textContent = password;
+    password = "";
+*/
