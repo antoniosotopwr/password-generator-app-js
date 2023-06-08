@@ -5,7 +5,12 @@ const labelLenghtPassword = document.querySelector(".card__passwordLenght");
 let sliderInput = document.querySelector(".card__slider");
 const btnGeneratePassword = document.querySelector(".card__btn");
 
+const squareLevel1 = document.querySelector(".level--1");
+const squareLevel2 = document.querySelector(".level--2");
+const squareLevel3 = document.querySelector(".level--3");
 const squareLevel4 = document.querySelector(".level--4");
+
+// let checkboxes = document.querySelector(".card__checkboxes").children;
 
 const chkUpperInput = document.querySelector(".checkboxUpper");
 const chkLowerInput = document.querySelector(".checkboxLower");
@@ -81,12 +86,12 @@ const displayLenghtPassword = () => {
   sliderNumber = Number(sliderInput.value);
 
   //check the passwordLenght to change square colors and border
-  if (sliderNumber === 20) {
-    squareLevel4.classList.add("colorLevel");
-    //change label level (low -> very high)
-  } else {
-    squareLevel4.classList.remove("colorLevel");
-  }
+  // if (sliderNumber >= 4) {
+  //   squareLevel1.classList.add("colorLevel");
+  //   //change label level (low -> very high)
+  // } else {
+  //   squareLevel1.classList.remove("colorLevel");
+  // }
 };
 
 //--Function to generate passwords
@@ -103,6 +108,33 @@ const generatePassword = function (array, sliderLenght) {
   letter = "";
   chosenArrayLenght = 0;
 };
+
+sliderInput.addEventListener("mouseup", function () {
+  // if (chkUpperInput.checked) {
+  //   if (sliderNumber >= 4) {
+  //       squareLevel1.classList.add("colorLevel");
+  //       //change label level (low -> very high)
+  //     } else {
+  //       squareLevel1.classList.remove("colorLevel");
+  //     }
+  // } else if (chkLowerInput.checked) {
+  // } else if (chkNumberInput.checked) {
+  // } else if (chkSymbolInput.checked) {
+  // } else {
+  //   console.log("Please check at least one checkbox");
+  // }
+  let checkboxesChecked = document.querySelectorAll(
+    "input[type=checkbox]:checked"
+  ).length;
+  console.log(checkboxesChecked);
+
+  if (sliderNumber >= 4 && checkboxesChecked >= 2) {
+    squareLevel1.classList.add("colorLevel");
+    //change label level (low -> very high)
+  } else {
+    squareLevel1.classList.remove("colorLevel");
+  }
+});
 
 //--validate checkboxes then generate password on button click
 btnGeneratePassword.addEventListener("click", function () {
