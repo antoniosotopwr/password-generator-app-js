@@ -112,7 +112,7 @@ const generatePassword = function (array, sliderLenght) {
 };
 
 //--event listener to add color of level of strenght with the slider release
-sliderInput.addEventListener("mouseup", function () {
+sliderInput.addEventListener("click", function () {
   let checkboxesChecked = document.querySelectorAll(
     "input[type=checkbox]:checked"
   ).length;
