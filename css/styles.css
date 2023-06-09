@@ -228,6 +228,9 @@ body {
   background-color: #a4ffaf;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 .card__btn:hover {
   color: #a4ffaf;

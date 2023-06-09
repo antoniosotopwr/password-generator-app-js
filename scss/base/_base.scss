@@ -255,6 +255,10 @@ body {
     background-color: #a4ffaf;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
+    // for disable text selection
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     &:hover {
       color: #a4ffaf;
       background-color: transparent;
