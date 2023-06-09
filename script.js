@@ -7,13 +7,17 @@ const btnGeneratePassword = document.querySelector(".card__btn");
 
 const levelPassLabel = document.querySelector(".card__strenghtWordLevel");
 const copyIcon = document.querySelector(".card__iconCopy");
+const checkboxes = document.querySelector(".card__checkboxes");
 
 const squareLevel1 = document.querySelector(".level--1");
 const squareLevel2 = document.querySelector(".level--2");
 const squareLevel3 = document.querySelector(".level--3");
 const squareLevel4 = document.querySelector(".level--4");
 
-// let checkboxes = document.querySelector(".card__checkboxes").children;
+// let checkboxesChecked = document.querySelectorAll("input[type=checkbox]:checked").length;
+// let checkBoxesChecked = document.querySelectorAll(
+//   "input[type=checkbox]:checked"
+// ).length;
 
 const chkUpperInput = document.querySelector(".checkboxUpper");
 const chkLowerInput = document.querySelector(".checkboxLower");
@@ -103,26 +107,26 @@ const generatePassword = function (array, sliderLenght) {
   chosenArrayLenght = 0;
 };
 
-//--event listener to add color of level of strenght with the slider release
-sliderInput.addEventListener("click", function () {
-  let checkboxesChecked = document.querySelectorAll(
-    "input[type=checkbox]:checked"
-  ).length;
-  console.log(checkboxesChecked);
+const addColorLevel = function (sliderValue) {
+  // let checkBoxesChecked = document.querySelectorAll(
+  //   "input[type=checkbox]:checked"
+  //   ).length;
+  // console.log(`After:${chkBoxesChecked}`);
 
-  if (sliderNumber >= 4 && checkboxesChecked >= 1) {
+  if (sliderValue >= 4) {
     squareLevel1.classList.add("colorLevel");
     levelPassLabel.textContent = "LOW";
-    if (sliderNumber >= 7 && checkboxesChecked >= 2) {
+    if (sliderValue >= 7) {
       squareLevel2.classList.add("colorLevel");
       levelPassLabel.textContent = "MEDIUM";
-      if (sliderNumber >= 9 && checkboxesChecked >= 3) {
+      if (sliderValue >= 9) {
         squareLevel3.classList.add("colorLevel");
         levelPassLabel.textContent = "HIGH";
-        if (sliderNumber >= 11 && checkboxesChecked >= 4) {
+        if (sliderValue >= 11) {
           squareLevel4.classList.add("colorLevel");
           levelPassLabel.textContent = "VERY HIGH";
         } else {
+          levelPassLabel.textContent = "HIGH";
           squareLevel4.classList.remove("colorLevel");
         }
       } else {
@@ -143,7 +147,7 @@ sliderInput.addEventListener("click", function () {
     squareLevel3.classList.remove("colorLevel");
     squareLevel4.classList.remove("colorLevel");
   }
-});
+};
 
 //--validate checkboxes then generate password on button click
 btnGeneratePassword.addEventListener("click", function () {
@@ -262,6 +266,130 @@ btnGeneratePassword.addEventListener("click", function () {
     console.log("Please check at least one checkbox");
     alert("Please check at least one checkbox");
   }
+  
+  addColorLevel(sliderNumber);
+});
+
+//--event listener to add color of level of strenght with the slider release
+sliderInput.addEventListener("click", function () {
+  
+
+  if (
+    chkUpperInput.checked &&
+    chkLowerInput.checked &&
+    chkNumberInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    console.log("Upper,Lower, Number and Symbol (all)");
+    for (let i = 1; i <= sliderNumber; i++) {
+      chosenArray = upperLowerNumberSymbolArray[randomNum(4)];
+      if (chosenArray === upperArray) {
+        letter = upperArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === lowerArray) {
+        letter = lowerArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === numbersArray) {
+        letter = numbersArray[randomNum(10)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === symbolsArray) {
+        letter = symbolsArray[randomNum(9)];
+        console.log(`Letter: ${letter}`);
+      }
+      password = password + letter;
+    }
+    labelPassword.textContent = password;
+    console.log(`Password:${password}, lenght:${password.length}`);
+    password = "";
+    letter = "";
+  }
+  //--- 3 OPTIONS ---
+  // 1 1 1 0
+  else if (
+    chkUpperInput.checked &&
+    chkLowerInput.checked &&
+    chkNumberInput.checked
+  ) {
+    console.log("Upper,Lower and number");
+    generatePassword(upperLowerNumberArray, sliderNumber);
+    console.log(upperLowerNumberArray);
+  }
+  // 0 1 1 1
+  else if (
+    chkLowerInput.checked &&
+    chkNumberInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    console.log("Lower, number and symbol");
+    generatePassword(lowerNumberSymbolArray, sliderNumber);
+  }
+  // 1 0 1 1
+  else if (
+    chkUpperInput.checked &&
+    chkNumberInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    generatePassword(upperNumberSymbolArray, sliderNumber);
+    console.log("upper, number and symbol");
+  }
+  // 1 1 0 1
+  else if (
+    chkUpperInput.checked &&
+    chkLowerInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    console.log("upper, lower and symbol");
+    generatePassword(upperLowerSymbolArray, sliderNumber);
+  }
+  //---2 options
+  // 1 1 0 0
+  else if (chkUpperInput.checked && chkLowerInput.checked) {
+    console.log("Upper and Lower");
+    generatePassword(upperLowerArray, sliderNumber);
+  }
+  // 0 0 1 1
+  else if (chkNumberInput.checked && chkSymbolInput.checked) {
+    console.log("Number and symbol");
+    generatePassword(numberSymbolArray, sliderNumber);
+  }
+  // 1 0 1 0
+  else if (chkUpperInput.checked && chkNumberInput.checked) {
+    console.log("Upper and number");
+    generatePassword(upperNumberArray, sliderNumber);
+  }
+  // 0 1 0 1
+  else if (chkLowerInput.checked && chkSymbolInput.checked) {
+    console.log("Lower and symbol");
+    generatePassword(lowerSymbolArray, sliderNumber);
+  }
+  // 0 1 1 0
+  else if (chkLowerInput.checked && chkNumberInput.checked) {
+    console.log("Lower and number");
+    generatePassword(lowerNumberArray, sliderNumber);
+  }
+  // 1 0 0 1
+  else if (chkUpperInput.checked && chkSymbolInput.checked) {
+    console.log("Upper and symbol");
+    generatePassword(upperSymbolArray, sliderNumber);
+  }
+  //---1 options
+  else if (chkUpperInput.checked) {
+    console.log("Only upper");
+    generatePassword(upperArray, sliderNumber);
+  } else if (chkLowerInput.checked) {
+    console.log("Only lower");
+    generatePassword(lowerArray, sliderNumber);
+  } else if (chkNumberInput.checked) {
+    console.log("Only Number");
+    generatePassword(numbersArray, sliderNumber);
+  } else if (chkSymbolInput.checked) {
+    console.log("Only symbol");
+    generatePassword(symbolsArray, sliderNumber);
+  } else {
+    console.log("Please check at least one checkbox");
+    alert("Please check at least one checkbox");
+  }
+  addColorLevel(sliderNumber);
 });
 
 //--Copy password to clipboard
@@ -273,6 +401,16 @@ copyIcon.addEventListener("click", function () {
     copyIcon.style.opacity = 1;
   }, 3000);
 });
+
+// checkboxes.addEventListener("click", function (e) {
+//   checkBoxesChecked = document.querySelectorAll(
+//     "input[type=checkbox]:checked"
+//   ).length;
+
+//   if (e.target.classList.contains("checkmark")) {
+//     addColorLevel(sliderNumber, checkBoxesChecked);
+//   }
+// });
 
 // OLD WAYS OF GENERATE PASSWORDS
 //I think this way is more efficent to generate accurate passwords (i guess)
