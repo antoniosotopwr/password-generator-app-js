@@ -523,6 +523,14 @@ copyIcon.addEventListener("click", function () {
     copyIcon.style.opacity = 1;
   }, 3000);
 });
+copyIcon.addEventListener("touchend", function () {
+  navigator.clipboard.writeText(labelPassword.textContent);
+
+  copyIcon.style.opacity = 0.5;
+  setTimeout(function () {
+    copyIcon.style.opacity = 1;
+  }, 3000);
+});
 
 // checkboxes.addEventListener("click", function (e) {
 //   checkBoxesChecked = document.querySelectorAll(
