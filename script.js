@@ -6,6 +6,7 @@ let sliderInput = document.querySelector(".card__slider");
 const btnGeneratePassword = document.querySelector(".card__btn");
 
 const levelPassLabel = document.querySelector(".card__strenghtWordLevel");
+const copyIcon = document.querySelector(".card__iconCopy");
 
 const squareLevel1 = document.querySelector(".level--1");
 const squareLevel2 = document.querySelector(".level--2");
@@ -78,22 +79,13 @@ const upperSymbolArray = [...upperArray, ...symbolsArray];
 
 //--TO DO
 /*
-1) add the squares colors in the validation of the lenght of the password or with certain checkboxes
-2) find a way to reset the slider to the default when recharge the page
+1) find a way to reset the slider to the default when recharge the page
 */
 
 //Function to display the current value of the slider with oninput property
 const displayLenghtPassword = () => {
   labelLenghtPassword.textContent = sliderInput.value;
   sliderNumber = Number(sliderInput.value);
-
-  //check the passwordLenght to change square colors and border
-  // if (sliderNumber >= 4) {
-  //   squareLevel1.classList.add("colorLevel");
-  //   //change label level (low -> very high)
-  // } else {
-  //   squareLevel1.classList.remove("colorLevel");
-  // }
 };
 
 //--Function to generate passwords
@@ -121,27 +113,15 @@ sliderInput.addEventListener("click", function () {
   if (sliderNumber >= 4 && checkboxesChecked >= 1) {
     squareLevel1.classList.add("colorLevel");
     levelPassLabel.textContent = "LOW";
-    console.log(
-      `1) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
-    );
     if (sliderNumber >= 7 && checkboxesChecked >= 2) {
       squareLevel2.classList.add("colorLevel");
       levelPassLabel.textContent = "MEDIUM";
-      console.log(
-        `2) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
-      );
       if (sliderNumber >= 9 && checkboxesChecked >= 3) {
         squareLevel3.classList.add("colorLevel");
         levelPassLabel.textContent = "HIGH";
-        console.log(
-          `3) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
-        );
         if (sliderNumber >= 11 && checkboxesChecked >= 4) {
           squareLevel4.classList.add("colorLevel");
           levelPassLabel.textContent = "VERY HIGH";
-          console.log(
-            `4) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
-          );
         } else {
           squareLevel4.classList.remove("colorLevel");
         }
@@ -282,6 +262,16 @@ btnGeneratePassword.addEventListener("click", function () {
     console.log("Please check at least one checkbox");
     alert("Please check at least one checkbox");
   }
+});
+
+//--Copy password to clipboard
+copyIcon.addEventListener("click", function () {
+  navigator.clipboard.writeText(labelPassword.textContent);
+
+  copyIcon.style.opacity = 0.5;
+  setTimeout(function () {
+    copyIcon.style.opacity = 1;
+  }, 3000);
 });
 
 // OLD WAYS OF GENERATE PASSWORDS
