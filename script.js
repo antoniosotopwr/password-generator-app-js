@@ -5,6 +5,8 @@ const labelLenghtPassword = document.querySelector(".card__passwordLenght");
 let sliderInput = document.querySelector(".card__slider");
 const btnGeneratePassword = document.querySelector(".card__btn");
 
+const levelPassLabel = document.querySelector(".card__strenghtWordLevel");
+
 const squareLevel1 = document.querySelector(".level--1");
 const squareLevel2 = document.querySelector(".level--2");
 const squareLevel3 = document.querySelector(".level--3");
@@ -116,11 +118,50 @@ sliderInput.addEventListener("mouseup", function () {
   ).length;
   console.log(checkboxesChecked);
 
-  if (sliderNumber >= 4 && checkboxesChecked >= 2) {
+  if (sliderNumber >= 4 && checkboxesChecked >= 1) {
     squareLevel1.classList.add("colorLevel");
-    //change label level (low -> very high)
+    levelPassLabel.textContent = "LOW";
+    console.log(
+      `1) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
+    );
+    if (sliderNumber >= 7 && checkboxesChecked >= 2) {
+      squareLevel2.classList.add("colorLevel");
+      levelPassLabel.textContent = "MEDIUM";
+      console.log(
+        `2) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
+      );
+      if (sliderNumber >= 9 && checkboxesChecked >= 3) {
+        squareLevel3.classList.add("colorLevel");
+        levelPassLabel.textContent = "HIGH";
+        console.log(
+          `3) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
+        );
+        if (sliderNumber >= 11 && checkboxesChecked >= 4) {
+          squareLevel4.classList.add("colorLevel");
+          levelPassLabel.textContent = "VERY HIGH";
+          console.log(
+            `4) slider number:${sliderNumber},checkBoxesChecked: ${checkboxesChecked}`
+          );
+        } else {
+          squareLevel4.classList.remove("colorLevel");
+        }
+      } else {
+        levelPassLabel.textContent = "MEDIUM";
+        squareLevel3.classList.remove("colorLevel");
+        squareLevel4.classList.remove("colorLevel");
+      }
+    } else {
+      levelPassLabel.textContent = "LOW";
+      squareLevel2.classList.remove("colorLevel");
+      squareLevel3.classList.remove("colorLevel");
+      squareLevel4.classList.remove("colorLevel");
+    }
   } else {
+    levelPassLabel.textContent = "LOW";
     squareLevel1.classList.remove("colorLevel");
+    squareLevel2.classList.remove("colorLevel");
+    squareLevel3.classList.remove("colorLevel");
+    squareLevel4.classList.remove("colorLevel");
   }
 });
 
