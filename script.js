@@ -272,8 +272,10 @@ btnGeneratePassword.addEventListener("click", function () {
 
 //--event listener to add color of level of strenght with the slider release
 
-sliderInput.addEventListener("touchstart", function () {
-  // e.preventDefault();
+
+
+//--Generate password when use slider
+sliderInput.addEventListener("click", function () {
   if (
     chkUpperInput.checked &&
     chkLowerInput.checked &&
@@ -392,8 +394,8 @@ sliderInput.addEventListener("touchstart", function () {
   addColorLevel(sliderNumber);
 });
 
-//--Generate password when use slider
-sliderInput.addEventListener("click", function () {
+sliderInput.addEventListener("touchend", function () {
+  // e.preventDefault();
   if (
     chkUpperInput.checked &&
     chkLowerInput.checked &&
