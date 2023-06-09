@@ -266,14 +266,134 @@ btnGeneratePassword.addEventListener("click", function () {
     console.log("Please check at least one checkbox");
     alert("Please check at least one checkbox");
   }
-  
+
   addColorLevel(sliderNumber);
 });
 
 //--event listener to add color of level of strenght with the slider release
-sliderInput.addEventListener("click", function () {
-  
 
+sliderInput.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  if (
+    chkUpperInput.checked &&
+    chkLowerInput.checked &&
+    chkNumberInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    console.log("Upper,Lower, Number and Symbol (all)");
+    for (let i = 1; i <= sliderNumber; i++) {
+      chosenArray = upperLowerNumberSymbolArray[randomNum(4)];
+      if (chosenArray === upperArray) {
+        letter = upperArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === lowerArray) {
+        letter = lowerArray[randomNum(26)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === numbersArray) {
+        letter = numbersArray[randomNum(10)];
+        console.log(`Letter: ${letter}`);
+      } else if (chosenArray === symbolsArray) {
+        letter = symbolsArray[randomNum(9)];
+        console.log(`Letter: ${letter}`);
+      }
+      password = password + letter;
+    }
+    labelPassword.textContent = password;
+    console.log(`Password:${password}, lenght:${password.length}`);
+    password = "";
+    letter = "";
+  }
+  //--- 3 OPTIONS ---
+  // 1 1 1 0
+  else if (
+    chkUpperInput.checked &&
+    chkLowerInput.checked &&
+    chkNumberInput.checked
+  ) {
+    console.log("Upper,Lower and number");
+    generatePassword(upperLowerNumberArray, sliderNumber);
+    console.log(upperLowerNumberArray);
+  }
+  // 0 1 1 1
+  else if (
+    chkLowerInput.checked &&
+    chkNumberInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    console.log("Lower, number and symbol");
+    generatePassword(lowerNumberSymbolArray, sliderNumber);
+  }
+  // 1 0 1 1
+  else if (
+    chkUpperInput.checked &&
+    chkNumberInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    generatePassword(upperNumberSymbolArray, sliderNumber);
+    console.log("upper, number and symbol");
+  }
+  // 1 1 0 1
+  else if (
+    chkUpperInput.checked &&
+    chkLowerInput.checked &&
+    chkSymbolInput.checked
+  ) {
+    console.log("upper, lower and symbol");
+    generatePassword(upperLowerSymbolArray, sliderNumber);
+  }
+  //---2 options
+  // 1 1 0 0
+  else if (chkUpperInput.checked && chkLowerInput.checked) {
+    console.log("Upper and Lower");
+    generatePassword(upperLowerArray, sliderNumber);
+  }
+  // 0 0 1 1
+  else if (chkNumberInput.checked && chkSymbolInput.checked) {
+    console.log("Number and symbol");
+    generatePassword(numberSymbolArray, sliderNumber);
+  }
+  // 1 0 1 0
+  else if (chkUpperInput.checked && chkNumberInput.checked) {
+    console.log("Upper and number");
+    generatePassword(upperNumberArray, sliderNumber);
+  }
+  // 0 1 0 1
+  else if (chkLowerInput.checked && chkSymbolInput.checked) {
+    console.log("Lower and symbol");
+    generatePassword(lowerSymbolArray, sliderNumber);
+  }
+  // 0 1 1 0
+  else if (chkLowerInput.checked && chkNumberInput.checked) {
+    console.log("Lower and number");
+    generatePassword(lowerNumberArray, sliderNumber);
+  }
+  // 1 0 0 1
+  else if (chkUpperInput.checked && chkSymbolInput.checked) {
+    console.log("Upper and symbol");
+    generatePassword(upperSymbolArray, sliderNumber);
+  }
+  //---1 options
+  else if (chkUpperInput.checked) {
+    console.log("Only upper");
+    generatePassword(upperArray, sliderNumber);
+  } else if (chkLowerInput.checked) {
+    console.log("Only lower");
+    generatePassword(lowerArray, sliderNumber);
+  } else if (chkNumberInput.checked) {
+    console.log("Only Number");
+    generatePassword(numbersArray, sliderNumber);
+  } else if (chkSymbolInput.checked) {
+    console.log("Only symbol");
+    generatePassword(symbolsArray, sliderNumber);
+  } else {
+    console.log("Please check at least one checkbox");
+    alert("Please check at least one checkbox");
+  }
+  addColorLevel(sliderNumber);
+});
+
+//--Generate password when use slider
+sliderInput.addEventListener("click", function () {
   if (
     chkUpperInput.checked &&
     chkLowerInput.checked &&
