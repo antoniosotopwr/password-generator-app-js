@@ -69,7 +69,7 @@ const upperLowerSymbolArray = [
 ];
 
 //--2 arrays
-const upperLowerArray = [upperArray, lowerArray];
+const upperLowerArray = [...upperArray, ...lowerArray];
 const numberSymbolArray = [...numbersArray, ...symbolsArray];
 const upperNumberArray = [...upperArray, ...numbersArray];
 const lowerSymbolArray = [...lowerArray, ...symbolsArray];
