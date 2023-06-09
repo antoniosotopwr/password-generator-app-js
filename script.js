@@ -109,20 +109,8 @@ const generatePassword = function (array, sliderLenght) {
   chosenArrayLenght = 0;
 };
 
+//--event listener to add color of level of strenght with the slider release
 sliderInput.addEventListener("mouseup", function () {
-  // if (chkUpperInput.checked) {
-  //   if (sliderNumber >= 4) {
-  //       squareLevel1.classList.add("colorLevel");
-  //       //change label level (low -> very high)
-  //     } else {
-  //       squareLevel1.classList.remove("colorLevel");
-  //     }
-  // } else if (chkLowerInput.checked) {
-  // } else if (chkNumberInput.checked) {
-  // } else if (chkSymbolInput.checked) {
-  // } else {
-  //   console.log("Please check at least one checkbox");
-  // }
   let checkboxesChecked = document.querySelectorAll(
     "input[type=checkbox]:checked"
   ).length;
