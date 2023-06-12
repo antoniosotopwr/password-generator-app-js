@@ -129,23 +129,29 @@ body {
   }
   //checkbox section
   &__checkboxes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
     padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content: center;
   }
 
   .checkboxContainer {
     display: block;
     position: relative;
-    // padding-left: 35px;
-    // margin-bottom: 12px;
-    padding-left: 1.875rem;
-    margin-bottom: 0.6rem;
     cursor: pointer;
-    // font-size: 22px;
+    padding-left: 2.2rem;
     font-size: 1rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    // padding-left: 35px;
+    // margin-bottom: 12px;
+    // padding-left: 1.875rem;
+    // margin-bottom: 0.6rem;
+    // font-size: 22px;
   }
 
   /* Hide the browser's default checkbox */
