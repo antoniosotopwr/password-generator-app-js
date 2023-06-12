@@ -250,4 +250,10 @@ body {
   margin-left: -0.1rem;
 }
 
+@media (min-width: 30em) {
+  .container {
+    max-width: 32rem;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
